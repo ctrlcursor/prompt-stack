@@ -95,6 +95,12 @@ Complete documentation, real trade examples, and the free Field Guide PDF (~20 p
 
 ---
 
+## Stay updated
+
+The Tuesday newsletter — new prompts tested on real positions, plus what each model got wrong — at [dixon.ai/field-guide](https://dixon.ai/field-guide).
+
+---
+
 ## License
 
 [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) — share and adapt freely, credit "Ben Dixon, dixon.ai".
