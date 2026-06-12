@@ -97,7 +97,19 @@ Complete documentation, real trade examples, and the free Field Guide PDF (~20 p
 
 ## Stay updated
 
-The Tuesday newsletter — new prompts tested on real positions, plus what each model got wrong — at [dixon.ai/field-guide](https://dixon.ai/field-guide).
+The weekly newsletter — new prompts tested on real positions, plus what each model got wrong — at [dixon.ai/newsletter](https://dixon.ai/newsletter/).
+
+---
+
+## Teaching or building on this?
+
+The licence below means yes, freely — courses, videos, tools, forks, all welcome. One ask: **link the canonical method page** ([dixon.ai/prompt-stack](https://dixon.ai/prompt-stack/)) wherever you teach or implement it, so your readers can find the original method, the worked examples, and the documented failure log behind it.
+
+Badge, if you want one:
+
+```markdown
+[![Built on the Prompt Stack](https://img.shields.io/badge/built%20on-the%20Prompt%20Stack-FF5A00)](https://dixon.ai/prompt-stack/)
+```
 
 ---
 
