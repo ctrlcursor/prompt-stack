@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use or build on this method, please cite it and link the canonical page."
+title: "The Prompt Stack"
+abstract: "A four-stage method for getting reliable, checkable answers out of AI on any decision — a quick check that the answer is about the right thing, then ROLE, FILTER, RISK and VERDICT run in order."
+type: software
+authors:
+  - family-names: "Dixon"
+    given-names: "Ben"
+    website: "https://dixon.ai"
+url: "https://dixon.ai/prompt-stack/"
+repository-code: "https://github.com/CtrlCursor/prompt-stack"
+license: CC-BY-4.0
+version: "1.0.0"
+date-released: "2026-06-15"
+keywords:
+  - prompting
+  - ai-reliability
+  - decision-making
+  - methodology

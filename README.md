@@ -1,103 +1,176 @@
-# Prompt Stack
+# The Prompt Stack
 
-A four-stage method for AI investment analysis. Built by Ben Dixon at [dixon.ai](https://dixon.ai).
+A four-stage method for getting reliable answers out of AI — on any decision. Built by Ben Dixon at [dixon.ai](https://dixon.ai).
 
-<!-- Last synced with dixon.ai/prompt-stack: 2026-05-24 -->
+Canonical home, with worked examples and a documented failure log: **[dixon.ai/prompt-stack](https://dixon.ai/prompt-stack/)**.
+
+<!-- Last synced with dixon.ai/prompt-stack: 2026-06-15 -->
 
 ---
 
 ## What it is
 
-Four prompts, run in order. Each stage has a job. Run them on any AI assistant before making an investment decision.
+AI sounds exactly as sure when it's wrong as when it's right. A made-up figure arrives in the same calm, helpful voice as a correct one, so tone tells you nothing — and tone is what most of us are quietly judging on.
 
-The method works because the default AI response is helpful and quietly bullish. These prompts fight that.
+The Prompt Stack is one quick check on any answer, then four questions you run in order. It works on a holiday deal or a doctor's letter; it's pushed hardest where a wrong answer costs real money. The default AI response is fluent and quietly agreeable. The check and the four stages fight that.
+
+Run them on any AI assistant — ChatGPT, Claude, Gemini, Perplexity.
+
+---
+
+## Before the four stages: one quick check
+
+Before any of the four stages, run one quick check on the answer in front of you. It takes under a minute, and it's aimed at one specific trap: an answer that's confident, fluent, and quietly about something other than your problem.
+
+The check is two questions — ask them before you trust a word:
+
+1. **Name the exact thing.** Make it tell you precisely what it's looking at — the specific page, document or item — before it summarises anything. *"Which one is this, exactly?"*
+2. **Hand me one fact I can check in under a minute.** One date, one number, one name you can hold against the real thing yourself.
+
+**Check one, bin the lot.** Fail either question and the whole answer goes — not the wrong line, all of it. The good-looking paragraphs aren't a consolation prize. They're the part that nearly fooled you. Passing both questions doesn't make the answer right — it means it's about the right thing, and worth running the four stages on.
+
+```
+Before you answer anything else: name exactly what you're looking at — the
+specific document or page in front of you. Then give me one fact about it I
+can check myself in under a minute. If you're not sure what you're looking
+at, say so before you go any further.
+```
+
+That clears the first trap. The four stages below are for the answer once you trust it's about the right thing.
 
 ---
 
 ## The four stages
 
-### ROLE — Set a sceptical stance
+Run in order. One question gets you one cheerful answer. Four questions, asked in order, each clear the ground for the next.
 
-Before asking your question, set the stance.
+### 01 — ROLE — Set the stance, not a costume
+
+Left to itself, the AI sells you the sunshine. So give it the opposite job first: set the stance, not a costume — sceptical, looking for reasons the view is wrong, and licensed to decline rather than guess. A grand job title doesn't make it more accurate — the instruction does. "Act as a top analyst" buys you no extra accuracy; "assume this is a bad idea until the facts say otherwise" changes the whole answer.
 
 ```
-You are a cautious analyst reviewing this for a risk committee, not a salesperson.
-Your job is to find what could go wrong, not to validate the idea. Be specific.
+You are a cautious analyst reviewing this, not a salesperson. Your default
+stance is sceptical — you need strong evidence to be positive, and you are
+looking for reasons the view might be wrong. You are allowed to decline
+rather than guess. Do not offer unsolicited encouragement.
 ```
 
-Good output: a distinct framing, not generic hedging. If the model sounds like a disclaimer generator, the role hasn't taken.
+Good output: a distinct framing, not generic hedging. If the model sounds like a disclaimer generator, the stance hasn't taken. Most of what the rest of the prompt is for gets done right here.
 
 ---
 
-### FILTER — Separate facts from inference
+### 02 — FILTER — Split what it knows from what it's filling in
+
+Most AI answers mix what's on the page with what the model invented on top — same tone, same confidence. The filter step makes it sort the answer into two piles: what the thing in front of you actually says, and what it's guessing. Whether a claim belongs in the first pile or the second is the one call the model shouldn't make on your behalf.
 
 ```
-List only what is directly observable from the source material — prices, dates,
-stated figures, management quotes. Label everything else as inference or assumption.
+Before forming any view, produce two lists:
+
+LIST A — Observable facts: things verifiable from the source material
+(the document or page in front of you, stated figures, dates, direct quotes).
+Do not include anything that requires interpretation to establish.
+
+LIST B — Assumptions and inferences: anything depending on extrapolation,
+projection, or interpretation. If uncertain which list something belongs
+on, put it in List B.
+
+Do not skip this step. Do not move to analysis until both lists exist.
 ```
 
-Good output: two columns (observable / inference). If column one is thin, you don't have enough data to proceed.
+Good output: two clean lists. Models smuggle assumptions into List A constantly — phrases like "well-positioned to…" are not facts. Once the lists are clean, everything that follows is built on something you can check.
 
 ---
 
-### RISK — Name what would prove the case wrong
+### 03 — RISK — Name what would prove the case wrong
+
+"What are the risks?" gets you a checklist, and a checklist isn't the point. The question that matters is the one almost nobody asks: what exact thing would prove this wrong — a tripwire, not a vague worry. A risk you can't see in advance is background noise. A risk with a specific signal is something you can act on.
 
 ```
-Name the single timing risk, the realistic downside scenario, and one observable
-signal that would prove this view wrong within [your timeframe].
+Identify:
+(a) What could go wrong
+(b) What would have to be true for the entire case to be wrong
+(c) What observable signal would tell you it's going wrong — something
+    specific enough to act on, with a timeframe
+
+If you can't give a specific answer to (c), say so.
 ```
 
-Good output: a tripwire, not a list of general risks. "Revenue growth slows" is not a tripwire. "Revenue guide comes in below $X next quarter" is.
+Good output: a tripwire, not a list of general risks. "Things might slow down" is not a tripwire; "the total at checkout comes out over £900" is. If the AI can't give a specific observable signal, it doesn't really have a view — it's pattern-matching off the consensus. That's a useful signal in itself.
 
 ---
 
-### VERDICT — One action with a confidence level
+### 04 — VERDICT — One action with a confidence level
+
+Nobody standing at the checkout with their card out has ever been helped by a balanced six-paragraph essay on both sides. The last step stops the hedging: one answer, and how sure it is — low, medium or high. A confidence label you can hold it to later is worth more than a summary it can hide behind.
 
 ```
-Based only on the observable facts identified above, give one specific action
-(buy / sell / hold / wait for X event) with a confidence level (high / medium / low).
-Hedging into a balanced summary is not an answer.
+Give one practical action and a confidence level (Low / Medium / High) with
+one sentence of rationale. State which assumption from List B the verdict
+depends on most.
+
+No hedged summary. One action.
 ```
 
-Good output: one action, one confidence level, one sentence explaining the limiting factor. "Low confidence" is a valid answer.
+Good output: one action, one confidence level, one sentence on the limiting factor. "Low confidence" is a valid answer. The honest upgrade, when it matters, is to ask the same thing again a different way and see if the answer holds — a verdict that survives a re-ask is one you can lean on.
 
 ---
 
-## How to use it
+## Run all four in one prompt
 
-Run the stages in order on the same question. Each stage uses the output of the previous one as context. Takes 10–15 minutes on a real position. Works with any AI assistant (ChatGPT, Claude, Gemini, Perplexity).
+Copy this, paste your decision at the bottom, run. Running each stage separately lets you review and correct the output between steps — worth doing when real money is involved.
+
+```
+You are a cautious analyst — sceptical by default, not a cheerleader. Work
+through this in four stages, in order. Do not combine stages or skip ahead.
+
+STAGE 1 — ROLE
+Confirm your stance: you are looking for reasons to be wrong, not reasons to
+be right. Acknowledge any obvious upside briefly, then set it aside.
+
+STAGE 2 — FILTER
+Before forming any view, produce two lists:
+LIST A — Observable facts: verifiable from the source material only (stated
+figures, dates, direct quotes, published data). Do not include anything that
+requires interpretation.
+LIST B — Assumptions and inferences: anything depending on extrapolation,
+projection, or interpretation. If uncertain, put it in List B.
+Do not proceed to Stage 3 until both lists exist.
+
+STAGE 3 — RISK
+Based on List A and List B only, identify:
+(a) What could go wrong
+(b) What would have to be true for the entire case to be wrong
+(c) What observable signal would tell you it's going wrong — something
+specific enough to act on, with a timeframe
+
+STAGE 4 — VERDICT
+Give one practical action and a confidence level (Low / Medium / High) with
+one sentence of rationale. State which assumption in List B the verdict
+depends on most. No hedged summary. One action.
+
+Decision: [WHAT YOU'RE DECIDING — add any brief context here]
+```
 
 ---
 
-## What it doesn't cover
+## Where it's pushed hardest: real money
 
-- Live market data — AI assistants have knowledge cutoffs and most fabricate options chain data when asked
-- Options pricing and Greeks — requires real-time chain data, not LLM inference
-- Tax implications — jurisdiction-specific, consult a professional
-- Position sizing — the method flags risks; it doesn't size trades
+The same four stages run on real investing positions, where a confident wrong answer costs money. Worked examples, the exact finance prompts, and the posts where each one met a live decision:
 
----
+- [The single prompt change that made AI analysis worth using](https://dixon.ai/posts/the-single-prompt-change-that-made-ai-analysis-useful/) — the FILTER stage, with a real worked example.
+- [5 questions to ask AI before buying any stock](https://dixon.ai/posts/5-questions-to-ask-ai-before-buying-any-stock/) — the VERDICT stage, for the hour before you place the order.
+- [7 AI prompts for covered calls](https://dixon.ai/posts/7-ai-prompts-for-covered-calls/) — the full stack applied to options income.
 
-## See it in practice
-
-Real trade examples from a real portfolio:
-
-- [7 AI prompts for covered calls — the ones I actually use](https://dixon.ai/posts/7-ai-prompts-for-covered-calls/)
-- [The single prompt change that made AI analysis worth using](https://dixon.ai/posts/the-single-prompt-change-that-made-ai-analysis-useful/)
-- [5 questions to ask AI before buying any stock](https://dixon.ai/posts/5-questions-to-ask-ai-before-buying-any-stock/)
+The full failure catalogue — every AI fabrication caught across these tests, with the prompt, the output, and the screenshot — is at [dixon.ai/lessons](https://dixon.ai/lessons/).
 
 ---
 
 ## Full methodology and Field Guide
 
-Complete documentation, real trade examples, and the free Field Guide PDF (~20 pages):
-[dixon.ai/prompt-stack](https://dixon.ai/prompt-stack/)
+Complete documentation, real worked examples, and the free Field Guide PDF (~20 pages):
+**[dixon.ai/prompt-stack](https://dixon.ai/prompt-stack/)**
 
----
-
-## Stay updated
-
-The weekly newsletter — new prompts tested on real positions, plus what each model got wrong — at [dixon.ai/newsletter](https://dixon.ai/newsletter/).
+The weekly newsletter — new prompts tested on real positions, plus what each model got wrong — is at [dixon.ai/newsletter](https://dixon.ai/newsletter/).
 
 ---
 
@@ -113,10 +186,16 @@ Badge, if you want one:
 
 ---
 
-## License
+## Who made it
 
-[CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) — share and adapt freely, credit "Ben Dixon, dixon.ai".
+The Prompt Stack is by **Ben Dixon** at [dixon.ai](https://dixon.ai) — an editorial site about getting reliable answers out of AI, tested on real decisions. The method is run against a real investment portfolio: real money, real decisions, no demos.
 
 ---
 
-*Not financial advice. This is a prompting methodology, not investment advice.*
+## Licence
+
+[CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) — share and adapt freely, credit "Ben Dixon, dixon.ai". See [`LICENSE`](LICENSE) for the full legal code and [`NOTICE`](NOTICE) for the attribution format.
+
+---
+
+*Not financial advice. This is a prompting method, not investment advice.*
