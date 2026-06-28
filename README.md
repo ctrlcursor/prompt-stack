@@ -4,7 +4,7 @@ A four-stage method for getting reliable answers out of AI — on any decision. 
 
 Canonical home, with worked examples and a documented failure log: **[dixon.ai/prompt-stack](https://dixon.ai/prompt-stack/)**.
 
-<!-- Last synced with dixon.ai/prompt-stack: 2026-06-15 -->
+<!-- Last synced with dixon.ai/prompt-stack: 2026-06-28 (v2.0.0) -->
 
 ---
 
@@ -44,40 +44,41 @@ That clears the first trap. The four stages below are for the answer once you tr
 
 Run in order. One question gets you one cheerful answer. Four questions, asked in order, each clear the ground for the next.
 
-### 01 — ROLE — Set the stance, not a costume
+### 01 — SCOPE — Fence in what it can use, and let it say "I don't know"
 
-Left to itself, the AI sells you the sunshine. So give it the opposite job first: set the stance, not a costume — sceptical, looking for reasons the view is wrong, and licensed to decline rather than guess. A grand job title doesn't make it more accurate — the instruction does. "Act as a top analyst" buys you no extra accuracy; "assume this is a bad idea until the facts say otherwise" changes the whole answer.
+Telling an AI to "be sceptical" changes its tone, not its accuracy. The move that actually cuts error is to fence it in: tell it exactly what it is allowed to draw on, and make it say plainly when a question is past its knowledge or training cutoff, rather than filling the gap. A grand job title buys you nothing. Constraining the source, and licensing an honest "I'm not sure," does.
 
 ```
-You are a cautious analyst reviewing this, not a salesperson. Your default
-stance is sceptical — you need strong evidence to be positive, and you are
-looking for reasons the view might be wrong. You are allowed to decline
-rather than guess. Do not offer unsolicited encouragement.
+Work only from the material I give you here, plus published sources you can
+name (filings, official guidance, dated data). Do not fill gaps from memory.
+If something I'm asking about is the kind of thing that changes over time (a
+price, a rate, a current rule), or is past what you can verify, say so
+plainly instead of guessing.
 ```
 
-Good output: a distinct framing, not generic hedging. If the model sounds like a disclaimer generator, the stance hasn't taken. Most of what the rest of the prompt is for gets done right here.
+Good output: it works inside the fence, and flags what it can't stand behind. If it answers a live, moving question with a confident figure and no caveat, the scope hasn't taken. Most of what the later stages depend on gets set right here.
 
 ---
 
-### 02 — FILTER — Split what it knows from what it's filling in
+### 02 — FILTER — Make it label every claim
 
-Most AI answers mix what's on the page with what the model invented on top — same tone, same confidence. The filter step makes it sort the answer into two piles: what the thing in front of you actually says, and what it's guessing. Whether a claim belongs in the first pile or the second is the one call the model shouldn't make on your behalf.
+Most AI answers blend what the source actually says with what the model added on top, in the same confident tone. Don't just ask it to "be honest about uncertainty"; it can't reliably tell. Make it LABEL every claim: sourced, inferred, or guessed. You stop reading smooth prose and start reading a map of what to trust, and the "guessed" tags are where you look first.
 
 ```
-Before forming any view, produce two lists:
+Before forming any view, produce two lists, and tag every line.
 
-LIST A — Observable facts: things verifiable from the source material
-(the document or page in front of you, stated figures, dates, direct quotes).
-Do not include anything that requires interpretation to establish.
+LIST A — Observable facts, verifiable from the material above (stated
+figures, dates, direct quotes, published data). Tag each one
+[sourced: where it came from].
 
 LIST B — Assumptions and inferences: anything depending on extrapolation,
-projection, or interpretation. If uncertain which list something belongs
-on, put it in List B.
+projection, or interpretation. Tag each one [inferred] or [guessed]. If
+uncertain which list a claim belongs on, put it in List B.
 
-Do not skip this step. Do not move to analysis until both lists exist.
+Do not move to analysis until both lists exist.
 ```
 
-Good output: two clean lists. Models smuggle assumptions into List A constantly — phrases like "well-positioned to…" are not facts. Once the lists are clean, everything that follows is built on something you can check.
+Good output: two clean lists with a tag on every line. Models smuggle assumptions into List A constantly; the tag forces the call into the open. Once the lists are clean, everything that follows is built on something you can check.
 
 ---
 
@@ -120,20 +121,21 @@ Good output: one action, one confidence level, one sentence on the limiting fact
 Copy this, paste your decision at the bottom, run. Running each stage separately lets you review and correct the output between steps — worth doing when real money is involved.
 
 ```
-You are a cautious analyst — sceptical by default, not a cheerleader. Work
-through this in four stages, in order. Do not combine stages or skip ahead.
+Work through this in four stages, in order. Do not combine stages or skip ahead.
 
-STAGE 1 — ROLE
-Confirm your stance: you are looking for reasons to be wrong, not reasons to
-be right. Acknowledge any obvious upside briefly, then set it aside.
+STAGE 1 — SCOPE
+Work only from the material I give you below, plus published sources you can
+name (filings, official guidance, dated data). Do not fill gaps from memory.
+If a figure is the kind that moves (a current price, rate or rule), or a
+question is past what you can verify, say so plainly instead of guessing.
 
 STAGE 2 — FILTER
-Before forming any view, produce two lists:
-LIST A — Observable facts: verifiable from the source material only (stated
-figures, dates, direct quotes, published data). Do not include anything that
-requires interpretation.
+Before forming any view, produce two lists, and tag every line:
+LIST A — Observable facts, verifiable from the material above. Tag each
+[sourced: where it came from].
 LIST B — Assumptions and inferences: anything depending on extrapolation,
-projection, or interpretation. If uncertain, put it in List B.
+projection or interpretation. Tag each [inferred] or [guessed]. If uncertain,
+put it in List B.
 Do not proceed to Stage 3 until both lists exist.
 
 STAGE 3 — RISK
@@ -150,6 +152,8 @@ depends on most. No hedged summary. One action.
 
 Decision: [WHAT YOU'RE DECIDING — add any brief context here]
 ```
+
+For anything that really matters, add one more step: run this same prompt through a second AI from a different lab, and dig wherever the two answers disagree. Different models fail in different places, so agreement narrows the odds and disagreement flags the thing to check. It's the idea behind the [AI Reliability Scoreboard](https://dixon.ai/scoreboard/).
 
 ---
 
