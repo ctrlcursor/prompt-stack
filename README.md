@@ -4,7 +4,7 @@ A four-stage method for getting reliable answers out of AI — on any decision. 
 
 Canonical home, with worked examples and a documented failure log: **[dixon.ai/prompt-stack](https://dixon.ai/prompt-stack/)**.
 
-<!-- Last synced with dixon.ai/prompt-stack: 2026-06-28 (v2.0.0) -->
+<!-- Last synced with dixon.ai/prompt-stack: 2026-08-15 (method unchanged at v2.0.0; docs + companion artefact refreshed) -->
 
 ---
 
@@ -165,16 +165,15 @@ The same four stages run on real investing positions, where a confident wrong an
 - [5 questions to ask AI before buying any stock](https://dixon.ai/posts/5-questions-to-ask-ai-before-buying-any-stock/) — the VERDICT stage, for the hour before you place the order.
 - [7 AI prompts for covered calls](https://dixon.ai/posts/7-ai-prompts-for-covered-calls/) — the full stack applied to options income.
 
-The full failure catalogue — every AI fabrication caught across these tests, with the prompt, the output, and the screenshot — is at [dixon.ai/lessons](https://dixon.ai/lessons/).
+The full failure catalogue — every AI fabrication caught across these tests, with the prompt, the output, and the screenshot — is in the evidence register at [dixon.ai/evidence](https://dixon.ai/evidence/).
 
 ---
 
-## Full methodology and Field Guide
+## The ready-to-paste version: the Bluff Filter
 
-Complete documentation, real worked examples, and the free Field Guide PDF (~20 pages):
-**[dixon.ai/prompt-stack](https://dixon.ai/prompt-stack/)**
+The Prompt Stack rewritten as standing instructions you hand to an AI assistant, so it runs the checks on itself. Five stages in that form (USE, then the four above), one page, CC BY 4.0. In this repo at [`BLUFF-FILTER.md`](BLUFF-FILTER.md), versioned separately from the Stack; delivered free, with the full method and worked examples, at **[dixon.ai/method](https://dixon.ai/method/)**.
 
-The weekly newsletter — new prompts tested on real positions, plus what each model got wrong — is at [dixon.ai/newsletter](https://dixon.ai/newsletter/).
+The fortnightly newsletter, Confidently Wrong, covers what each AI model got wrong and which one was bluffing: [dixon.ai/join](https://dixon.ai/join/).
 
 ---
 
@@ -185,7 +184,7 @@ The licence below means yes, freely — courses, videos, tools, forks, all welco
 Badge, if you want one:
 
 ```markdown
-[![Built on the Prompt Stack](https://img.shields.io/badge/built%20on-the%20Prompt%20Stack-FF5A00)](https://dixon.ai/prompt-stack/)
+[![Built on the Prompt Stack](https://img.shields.io/badge/built%20on-the%20Prompt%20Stack-E85423)](https://dixon.ai/prompt-stack/)
 ```
 
 ---
